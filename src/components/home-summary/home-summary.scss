@@ -1,0 +1,27 @@
+home-summary {
+    .history-sort-menu {
+        list-style-type: none;
+        margin: 0!important;
+        padding: 15px 0 10px 0!important;
+
+        li {
+            display: inline-block;
+            font-size: 1.6rem;
+            font-weight: 700;
+            padding: 0 10px 0 10px;
+            text-transform: uppercase;
+        }
+    }
+
+    @media screen and (max-width: 420px) {
+        .history-list {
+            height: 200px;
+        }
+    }
+
+    @media screen and (max-width: 320px) {
+        .history-list {
+            height: 150px;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+home-weather {
+    .weather-location {
+        font-size: 28px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .weather-icon {
+        display: block;
+        margin: 7px 0 0 auto;
+        width: 60px;
+    }
+
+    .weather-temp {
+        display: block;
+        font-size: 72px;
+        font-weight: bold;
+        line-height: 72px;
+        margin: 0 auto 0 10px;
+        width: 100px;
+    }
+
+    .weather-desc {
+        clear: both;
+        color: #000!important;
+        font-size: 22px!important;
+        font-weight: bold!important;
+        margin-bottom: 0!important;
+    }
+}

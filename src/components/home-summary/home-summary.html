@@ -1,0 +1,50 @@
+<ion-card>
+  <ion-card-header text-center>
+    <ion-segment [ngModel]="selectedTab" (ionChange)="summaryTabChanged($event)">
+      <ion-segment-button value="statistics">
+        Statistics
+      </ion-segment-button>
+      <ion-segment-button value="history">
+        History
+      </ion-segment-button>
+    </ion-segment>
+  </ion-card-header>
+  <ion-card-content>
+    <div [ngSwitch]="selectedTab">
+      <div *ngSwitchCase="'statistics'" padding>
+        Stats
+      </div>
+      <div *ngSwitchCase="'history'">
+        <div class="history-sort" text-center>
+          <ul class="history-sort-menu">
+            <li>Recent</li>
+            <li>Distance</li>
+            <li>Time</li>
+            <li>Avg. Speed</li>
+          </ul>
+        </div>
+        <div class="history-list">
+          <ion-scroll scrollY="true" style="width: 100%; height: 100%">
+            <ion-list>
+              <ion-item>
+                item 1
+              </ion-item>
+              <ion-item>
+                item 2
+              </ion-item>
+              <ion-item>
+                item 2
+              </ion-item>
+              <ion-item>
+                item 2
+              </ion-item>
+              <ion-item>
+                item 2
+              </ion-item>
+            </ion-list>
+          </ion-scroll>
+        </div>
+      </div>
+    </div>
+  </ion-card-content>
+</ion-card>
