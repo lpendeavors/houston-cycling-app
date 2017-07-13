@@ -15,6 +15,8 @@ import 'rxjs/add/operator/filter';
 @Injectable()
 export class LocationProvider {
 
+  public locationUpdate: Subject<any> = new Subject();
+
   private watch: any;
 
   constructor(
@@ -28,7 +30,7 @@ export class LocationProvider {
     return new Promise((resolve, reject) => {
       this.platform.ready().then(() => {
         this.geolocation.getCurrentPosition().then((pos) => {
-          return resolve(pos);
+          return resolve(pos.coords);
         },
         (error) => {
           reject(error.message || error);
@@ -60,7 +62,7 @@ export class LocationProvider {
     this.platform.ready().then(() => {
       this.backgroundGeolocation.configure(config).subscribe((location: BackgroundGeolocationResponse) => {
         this.zone.run(() => {
-          console.log(location);
+          this.locationUpdate.next(location);
         });
         this.backgroundGeolocation.finish();
       }, (error) => {
@@ -79,7 +81,7 @@ export class LocationProvider {
 
       this.watch = this.geolocation.watchPosition(options).filter((p: any) => p.code === undefined).subscribe((position: Geoposition) => {
         this.zone.run(() => {
-          console.log(position.coords);
+          this.locationUpdate.next(position);
         });
       });
     });

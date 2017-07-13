@@ -1,6 +1,6 @@
-<ion-card>
+<ion-card *ngIf="currentWeather">
   <ion-card-header text-center>
-    <span class="weather-location">Houston</span>
+    <span class="weather-location">{{currentWeather.name}}</span>
   </ion-card-header>
   <ion-card-content class="weather-container" text-center>
     <ion-grid>
@@ -9,10 +9,10 @@
           <img class="weather-icon" src="http://placehold.it/150x150">
         </ion-col>
         <ion-col>
-          <div class="weather-temp">87&deg;</div>
+          <div class="weather-temp">{{currentWeather.main.temp|number:'1.0-0'}}&deg;</div>
         </ion-col>
       </ion-row>
     </ion-grid>
-    <p class="weather-desc">Haze</p>
+    <p class="weather-desc">{{currentWeather.weather[0].description}}</p>
   </ion-card-content>
 </ion-card>

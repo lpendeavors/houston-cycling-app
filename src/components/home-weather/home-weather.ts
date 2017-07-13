@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LocationProvider } from '../../providers/location/location';
 import { WeatherProvider } from '../../providers/weather/weather';
 
 /**
@@ -11,14 +12,24 @@ import { WeatherProvider } from '../../providers/weather/weather';
   selector: 'home-weather',
   templateUrl: 'home-weather.html'
 })
-export class HomeWeatherComponent {
+export class HomeWeatherComponent implements OnInit {
 
-  text: string;
+  currentWeather: Object;
 
   constructor(
+    public location: LocationProvider,
     public weather: WeatherProvider
-  ) {
-    console.log(this.weather.getWeather());
-  }
+  ) {}
 
+  ngOnInit(): void {
+    // Get current location
+    this.location.getPosition().then(pos => {
+      console.log(pos);
+      // Get weather for current location
+      this.weather.getWeather(pos.latitude, pos.longitude).then(res => {
+        console.log(res);
+        this.currentWeather = res;
+      });
+    })
+  }
 }

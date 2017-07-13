@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { LocationProvider } from '../location/location';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -17,18 +16,12 @@ export class WeatherProvider {
   private key: string = '066e7359820f382914a2eff95cad643a';
 
   constructor(
-    public http: Http,
-    public location: LocationProvider ) {}
+    public http: Http
+    ) {}
 
-  getWeather(): void {
-    this.location.getPosition().then(pos => {
-      const url = `${this.apiUrl}lat=${pos.latitude}&lon=${pos.longitude}&appid=${this.key}&units=imperial`;
-      return this.http.get(url).toPromise().then(response => response.json()).catch(this.handleError);
-    });
+  getWeather(lat: number, lng: number): Promise<any> {
+    const url = `${this.apiUrl}lat=${lat}&lon=${lng}&appid=${this.key}&units=imperial`;
+    return this.http.get(url).toPromise().then(response => response.json()).catch();
   }
 
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  }
 }

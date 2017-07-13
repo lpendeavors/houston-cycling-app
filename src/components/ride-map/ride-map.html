@@ -1,4 +1,30 @@
 <!-- Generated template for the RideMapComponent component -->
-<div>
-  {{text}}
+<div class="ride-details">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <section class="current-speed">
+          <h3>Current Speed</h3>
+          <p class="speed"><span>{{ride.currentSpeed || 0}}</span> mph</p>
+        </section>
+      </ion-col>
+      <ion-col>
+        <section class="time">
+          <h3>Time</h3>
+          <span>{{ride.ticks}}</span>
+        </section>
+        <section class="distance">
+          <h3>Distance</h3>
+          <span>{{ride.distance || 0}} miles</span>
+        </section>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+
+<div class="map" *ngIf="mapId" id="{{mapId}}"></div>
+
+<div class="btn-container">
+  <button ion-button color="secondary" class="start-btn" (click)="ride.askRideType()" *ngIf="!ride.inProgress">Start</button>
+  <button ion-button color="danger" class="end-btn" (click)="ride.endRide()" *ngIf="ride.inProgress">Stop</button>
 </div>

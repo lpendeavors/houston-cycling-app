@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { RideMapComponent } from './ride-map';
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { RideMapComponent } from './ride-map';
   ],
   imports: [
     IonicPageModule.forChild(RideMapComponent),
+    PipesModule
   ],
   exports: [
     RideMapComponent

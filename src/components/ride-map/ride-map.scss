@@ -1,3 +1,68 @@
 ride-map {
+    .map {
+        height: 100%;
+        width: 100%;
+    }
 
+    .ride-details {
+        background-color: hsla(0, 0%, 91%, .7);
+        clear: top;
+        left: 2.5%;
+        padding: 0 10px;
+        position: fixed;
+        right: 2.5%;
+        top: 11vh;
+        width: 95%;
+        z-index: 999999;
+
+        h3 {
+            font-weight: bold;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .current-speed {
+            padding-top: 20px;
+            text-align: center;
+
+            p.speed {
+                font-size: 44px;
+                margin: 0;
+                padding: 0;
+            }
+            .speed span {
+                font-weight: bold;
+            }
+        }
+
+        .time, .distance {
+            margin-left: 30px;
+            span {
+                font-size: 26px;
+            }
+        }
+
+        .time {
+            margin-bottom: 5px;
+        }
+    }
+
+    button.start-btn,
+    button.end-btn {
+        bottom: 10vh;
+        clear: none;
+        display: block;
+        font-weight: bold;
+        left: 2.5%;
+        position: fixed;
+        right: 2.5%;
+        text-transform: uppercase;
+        width: 95%;
+        z-index: 999999;
+    }
+
+    .leaflet-top .leaflet-control {
+	    margin-top: 165px;;
+	}
 }
+

@@ -1,3 +1,18 @@
 page-profile {
+    input {
+        text-align: right;
+    }
 
+    ion-select {
+        margin-left: auto;
+    }
+
+    button {
+        font-weight: bold;
+        margin-bottom: 2.5%!important;
+        margin-left: 2.5%!important;
+        margin-right: 2.5%!important;
+        text-transform: uppercase!important;
+        width: 95%!important;
+    }
 }

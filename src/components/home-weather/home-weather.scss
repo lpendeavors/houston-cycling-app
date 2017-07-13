@@ -13,9 +13,8 @@ home-weather {
 
     .weather-temp {
         display: block;
-        font-size: 72px;
+        font-size: 54px;
         font-weight: bold;
-        line-height: 72px;
         margin: 0 auto 0 10px;
         width: 100px;
     }
@@ -26,5 +25,6 @@ home-weather {
         font-size: 22px!important;
         font-weight: bold!important;
         margin-bottom: 0!important;
+        text-transform: capitalize;
     }
 }

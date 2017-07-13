@@ -37,6 +37,17 @@ ion-grid {
     padding: 0!important;
 }
 
+.button-md,
+.label-md,
+.text-input-md,
+.select-md {
+    font-size: 2.2rem!important;
+}
+
+.label-md {
+    font-weight: bold;
+}
+
 .scroll-content {
     padding-left: 0!important;
     padding-right: 0!important;

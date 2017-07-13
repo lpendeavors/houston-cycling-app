@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { ProfileProvider } from '../../providers/profile/profile';
+import { ProfileModel } from '../../models/profile/profile';
 
 /**
  * Generated class for the ProfilePage page.
@@ -12,13 +14,44 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-profile',
   templateUrl: 'profile.html',
 })
-export class ProfilePage {
+export class ProfilePage implements OnInit {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private profile = new ProfileModel();
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public profileProvider: ProfileProvider,
+    public toast: ToastController
+  ) {  }
+
+  save(): Promise<any> {
+    if (Object.keys(this.profile).length === 0) {
+      return; // No profile fields to save
+    } else {
+      this.profileProvider.save(this.profile)
+      .then(response => this.confirmSave());
+    }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
+  private confirmSave(): void {
+    let confirm = this.toast.create({
+      message: 'Profile saved successfully',
+      duration: 3000,
+      position: 'top'
+    });
+    confirm.present();
+  }
+
+  private getProfile(): void {
+    
+  }
+
+  ngOnInit(): void {
+    // Check for existing profile
+    this.profileProvider.getProfile().then(profile => {
+      if (profile) this.profile = profile;
+    });
   }
 
 }

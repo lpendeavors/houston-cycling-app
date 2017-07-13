@@ -13,6 +13,72 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-list>
+    <ion-item-divider text-wrap>
+      Thank you for using the Houston Cycling app. Please fill out the optional 
+      profile information below. All information is anonymous and will help in 
+      understanding different cycling preferences.
+    </ion-item-divider>
+    <br>
+    <ion-item-group>
+      <ion-item-divider>
+        My Info
+      </ion-item-divider>
+      <ion-item>
+        <ion-label fixed>Age</ion-label>
+        <ion-input [(ngModel)]="profile.age" type="number" min="13" value=""></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Gender</ion-label>
+        <ion-select [(ngModel)]="profile.gender">
+          <ion-option value="M">Male</ion-option>
+          <ion-option value="F">Female</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Ethnicity</ion-label>
+        <ion-select [(ngModel)]="profile.ethnicity">
+          <ion-option value="W">White</ion-option>
+          <ion-option value="AA">African American</ion-option>
+          <ion-option value="H">Hispanic</ion-option>
+          <ion-option value="A">Asian</ion-option>
+          <ion-option value="NA">Native American</ion-option>
+          <ion-option value="PI">Pacific Islander</ion-option>
+          <ion-option value="MR">Multi-racial</ion-option>
+          <ion-option value="O">Other</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Email</ion-label>
+        <ion-input [(ngModel)]="profile.email" type="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Income</ion-label>
+        <ion-input [(ngModel)]="profile.income" type="number"></ion-input>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
 
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider>
+        My Commute
+      </ion-item-divider>
+      <ion-item>
+        <ion-label fixed>Home zip</ion-label>
+        <ion-input [(ngModel)]="profile.homeZip" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Work zip</ion-label>
+        <ion-input [(ngModel)]="profile.workZip" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>School zip</ion-label>
+        <ion-input [(ngModel)]="profile.schoolZip" type="number"></ion-input>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+  <button ion-button block color="secondary" (click)="save()">Save</button>
 </ion-content>
